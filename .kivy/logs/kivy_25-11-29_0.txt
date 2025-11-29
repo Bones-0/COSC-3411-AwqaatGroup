@@ -1,0 +1,14 @@
+[INFO   ] Logger: Record log in /home/hassan/Documents/PythonProjects/TruePrayer/.kivy/logs/kivy_25-11-29_0.txt
+[DEBUG  ] Config: Upgrading from 0 to 1
+[WARNING] Config: Upgrading configuration in progress.
+[WARNING] Config: Older configuration version detected (0 instead of 29)
+[INFO   ] Kivy: v3.0.0.dev0
+[INFO   ] Kivy: Installed at "/home/hassan/.local/share/Trash/files/kivy/kivy/kivy/kivy/__init__.py"
+[INFO   ] Python: v3.11.14 (main, Nov 19 2025, 22:47:14) [Clang 21.1.4 ]
+[INFO   ] Python: Interpreter at "/home/hassan/Documents/PythonProjects/TruePrayer/.venv/bin/python3.11"
+[INFO   ] Logger: Purge log fired. Processing...
+[INFO   ] Logger: Purge finished!
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/home/hassan/.local/share/Trash/files/kivy/kivy/kivy/setup.py", line 25, in <module>
+[WARNING] stderr:     from setuptools import Distribution, Extension, find_packages, setup
+[WARNING] stderr: ModuleNotFoundError: No module named 'setuptools'
