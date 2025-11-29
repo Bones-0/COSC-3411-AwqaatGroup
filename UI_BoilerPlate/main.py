@@ -1,9 +1,12 @@
 from kivy.app import App
 from kivy.uix.label import Label
 
+class NavigationManger():
+    pass    
+
 class MainApp(App):
     def build(self):
-        return Label(text="Hello, Kivy!")
+        return NavigationManger()
 
 
 if __name__ == "__main__":
