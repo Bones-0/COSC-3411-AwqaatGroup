@@ -1,4 +1,42 @@
+#import utils kivy.utils
 <NavigationManager>:
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1  # Dark gray background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     BoxLayout:
-        Label:
-            text: 'testing'
+        size: root.width, root.height * 0.1 
+        spacing: 5
+        padding: 5
+        canvas.before:
+            Color: 
+                rgba: 0.5, 0.5, 0.5, 1
+            Rectangle:  
+                size: self.size
+                pos: self.pos
+
+
+        Button:
+            text: 'Till'
+            background_color: (0.5,0.5,0.5,1)
+    
+        Button:
+            text: 'Prayer times'
+            background_color: (0.5,0.5,0.5,1)
+    
+        Button:
+            text: 'Alarms'
+            background_color: (0.5,0.5,0.5,1)
+    
+        Button:
+            text: 'International'
+            background_color: (0.5,0.5,0.5,1)
+        Button:
+            text: 'Settings'
+            background_color: (0.5,0.5,0.5,1)
+        
+        
+
