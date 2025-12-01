@@ -1,5 +1,6 @@
-#import utils kivy.utils
+#:import utils kivy.utils
 <NavigationManager>:
+
     canvas.before:
         Color:
             rgba: 0.1, 0.1, 0.1, 1  # Dark gray background
@@ -7,36 +8,63 @@
             pos: self.pos
             size: self.size
 
-    BoxLayout:
-        size: root.width, root.height * 0.1 
-        spacing: 5
-        padding: 5
-        canvas.before:
-            Color: 
-                rgba: 0.5, 0.5, 0.5, 1
-            Rectangle:  
-                size: self.size
-                pos: self.pos
+    ScreenManager:
+        id: current_screen
+
+        Screen:
+            id: 1
+            name: "Till"
+            Label:
+                text: "Prayer app"
+                size: root.width, root.height 
+                color: 0, 0, 0, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: utils.get_color_from_hex('#FFFFFF')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            BoxLayout:
+                size: root.width, root.height * 0.1 
+                spacing: 5
+                padding: 5
+                canvas.before:
+                    Color: 
+                        rgba: 0.5, 0.5, 0.5, 1
+                    Rectangle:  
+                        size: self.size
+                        pos: self.pos
 
 
-        Button:
-            text: 'Till'
-            background_color: (0.5,0.5,0.5,1)
-    
-        Button:
-            text: 'Prayer times'
-            background_color: (0.5,0.5,0.5,1)
-    
-        Button:
-            text: 'Alarms'
-            background_color: (0.5,0.5,0.5,1)
-    
-        Button:
-            text: 'International'
-            background_color: (0.5,0.5,0.5,1)
-        Button:
-            text: 'Settings'
-            background_color: (0.5,0.5,0.5,1)
-        
-        
+                Button:
+                    text: 'Till'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(1)
+            
+                Button:
+                    text: 'Prayer times'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(2)
+            
+                Button:
+                    text: 'Alarms'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(3)
+            
+                Button:
+                    text: 'International'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(4)
+                Button:
+                    text: 'Qibla'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(5)
+                Button:
+                    text: 'Settings'
+                    background_color: (0.5,0.5,0.5,1)
+                    on_press: root.screen_switcher(6)
+            
+            
 
