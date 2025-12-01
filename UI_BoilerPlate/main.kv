@@ -1,4 +1,5 @@
 #:import utils kivy.utils
+#:import WipeTransition kivy.uix.screenmanager.WipeTransition
 <NavigationManager>:
 
     canvas.before:
@@ -11,85 +12,123 @@
     ScreenManager:
         size: root.width, root.height 
         id: current_screen
-
+        transition: WipeTransition(duration=0.25)
+        
         Screen:
             name: "Till"
-            Label:
-                text: "Till"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
+
         Screen:
             name: "Prayer"
-            Label:
-                text: "Prayer Times"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
         Screen:
             name: "Alarms"
-            Label:
-                text: "Alarms"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
         Screen:
             name: "International"
-            Label:
-                text: "International"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
         Screen:
             name: "Qibla"
-            Label:
-                text: "Qibla"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
         Screen:
             name: "Settings"
-            Label:
-                text: "Settings"
-                size: root.width, root.height 
-                color: 0, 0, 0, 1  # White text
-
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Dark gray background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size    
+            BoxLayout:
+                size: root.width * 0.5, root.height * 0.5
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: utils.get_color_from_hex('#FFFFFF')
-                    Rectangle:
+                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                    RoundedRectangle:
                         pos: self.pos
-                        size: self.size
+                        size: self.size 
+                        radius: [20]
     BoxLayout:
         size: root.width, root.height * 0.1 
         spacing: 5
