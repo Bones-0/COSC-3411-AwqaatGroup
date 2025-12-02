@@ -7,7 +7,8 @@ from kivy.uix.widget import Widget
 from kivy.lang import Builder
 import kivy.utils as utils
 
-Builder.load_file("main.kv")
+Builder.load_file("screens.kv")
+Builder.load_file("hotbar.kv")
 
 class NavigationManager(Widget):
     def screen_switcher(self, instance):

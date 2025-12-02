@@ -1,0 +1,40 @@
+ BoxLayout:
+        size: root.width, root.height * 0.1 
+        spacing: 5
+        padding: 5
+        orientation: 'horizontal'        
+        canvas.before:
+            Color: 
+                rgba: 0.5, 0.5, 0.5, 1
+            Rectangle:  
+                size: self.size
+                pos: self.pos
+
+
+        Button:
+            text: 'Till'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("Till")
+    
+        Button:
+            text: 'Prayer times'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("Prayer")
+    
+        Button:
+            text: 'Alarms'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("Alarms")
+    
+        Button:
+            text: 'International'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("International")
+        Button:
+            text: 'Qibla'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("Qibla")
+        Button:
+            text: 'Settings'
+            background_color: (0.5,0.5,0.5,1)
+            on_press: root.screen_switcher("Settings")
