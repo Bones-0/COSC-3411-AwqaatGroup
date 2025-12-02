@@ -67,7 +67,7 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                        rgba: 0.5, 0.5, 0, 1  # Dark gray background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size 
@@ -86,7 +86,7 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                        rgba: 0, 0.5, 0.5, 1  # Dark gray background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size 
@@ -105,7 +105,7 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                        rgba: 0.5, 1, 0.5, 1  # Dark gray background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size 
@@ -124,16 +124,17 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 canvas.before:
                     Color:
-                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
+                        rgba: 0.5, 0.5, 1, 1  # Dark gray background
                     RoundedRectangle:
                         pos: self.pos
                         size: self.size 
                         radius: [20]
     BoxLayout:
-        size: root.width, root.height * 0.1 
+        
+        size: root.width * 0.1 , root.height 
         spacing: 5
         padding: 5
-        orientation: 'horizontal'        
+        orientation: 'vertical'        
         canvas.before:
             Color: 
                 rgba: 0.5, 0.5, 0.5, 1
@@ -148,7 +149,7 @@
             on_press: root.screen_switcher("Till")
     
         Button:
-            text: 'Prayer times'
+            text: 'Prayer'
             background_color: (0.5,0.5,0.5,1)
             on_press: root.screen_switcher("Prayer")
     
