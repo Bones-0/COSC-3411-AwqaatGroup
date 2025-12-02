@@ -1,138 +1,57 @@
-#:import utils kivy.utils
 #:import WipeTransition kivy.uix.screenmanager.WipeTransition
-<NavigationManager>:
 
+<BoilerPlate>:
+    orientation: "vertical"
+
+    Hotbar:
+    NavigationManager:
+        id: nav_manager
+        transition: WipeTransition(duration=0.25)
+
+<NavigationManager>:
     canvas.before:
         Color:
-            rgba: 0.1, 0.1, 0.1, 1  # Dark gray background
+            rgba: 0.1, 0.1, 0.1, 1
         Rectangle:
             pos: self.pos
             size: self.size
-    
-    ScreenManager:
-        size: root.width, root.height 
-        id: current_screen
-        transition: WipeTransition(duration=0.25)
-        
-        Screen:
-            name: "Till"
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
-                    pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0.5, 0.5, 0.5, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
 
-        Screen:
-            name: "Prayer"
+    Screen:
+        name: "Till"
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            size: root.width * 0.5, root.height * 0.5
+            size_hint: None, None
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
             canvas.before:
                 Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
+                    rgba: 0.5, 0.5, 0.5, 1
+                RoundedRectangle:
                     pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0.5, 0, 0.5, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
-        Screen:
-            name: "Alarms"
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
-                    pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0.5, 0.5, 0, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
-        Screen:
-            name: "International"
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
-                    pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0, 0.5, 0.5, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
-        Screen:
-            name: "Qibla"
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
-                    pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0.5, 1, 0.5, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
-        Screen:
-            name: "Settings"
-            canvas.before:
-                Color:
-                    rgba: 1, 1, 1, 1  # Dark gray background
-                Rectangle:
-                    pos: self.pos
-                    size: self.size    
-            BoxLayout:
-                size: root.width * 0.5, root.height * 0.5
-                size_hint: None, None
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                canvas.before:
-                    Color:
-                        rgba: 0.5, 0.5, 1, 1  # Dark gray background
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size 
-                        radius: [20]
-   
-    
+                    size: self.size
+                    radius: [20]
 
-
-            
-            
-
+    Screen:
+        name: "Prayer"
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            size: root.width * 0.5, root.height * 0.5
+            size_hint: None, None
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]

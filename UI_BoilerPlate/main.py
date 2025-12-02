@@ -1,26 +1,58 @@
-from kivy.uix.filechooser import ScreenManager
-from kivy.uix.accordion import NumericProperty
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.screenmanager import ScreenManager
 from kivy.app import App
-from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.widget import Widget
 from kivy.lang import Builder
-import kivy.utils as utils
 
-Builder.load_file("screens.kv")
+# Load the kv files
 Builder.load_file("hotbar.kv")
+Builder.load_file("screens.kv")
 
-class NavigationManager(Widget):
-    def screen_switcher(self, instance):
-        ScreenManager = self.ids.current_screen
-        ScreenManager.current = instance
-        print("Screen changed to:", instance)
+class Hotbar(FloatLayout):
+    pass
+
+class NavigationManager(ScreenManager):
+    pass
+
+class BoilerPlate(BoxLayout):
+    def screen_switcher(self, screen_name):
+        # 'nav_manager' will be the id of NavigationManager in KV
+        screen_manager = self.ids.nav_manager
+        screen_manager.current = screen_name
+        print("Screen changed to:", screen_name)
 
 class MainApp(App):
     def build(self):
-        return NavigationManager()
-
+        return BoilerPlate()
 
 if __name__ == "__main__":
     MainApp().run()
-    
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.screenmanager import ScreenManager
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder
+
+# Load the kv files
+Builder.load_file("hotbar.kv")
+Builder.load_file("screens.kv")
+
+class Hotbar(FloatLayout):
+    pass
+
+class NavigationManager(ScreenManager):
+    pass
+
+class BoilerPlate(BoxLayout):
+    def screen_switcher(self, screen_name):
+        # 'nav_manager' will be the id of NavigationManager in KV
+        screen_manager = self.ids.nav_manager
+        screen_manager.current = screen_name
+        print("Screen changed to:", screen_name)
+
+class MainApp(App):
+    def build(self):
+        return BoilerPlate()
+
+if __name__ == "__main__":
+    MainApp().run()
