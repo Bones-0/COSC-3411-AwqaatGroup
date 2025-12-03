@@ -1,5 +1,32 @@
 #:import utils kivy.utils
 #:import WipeTransition kivy.uix.screenmanager.WipeTransition
+
+<RoundedButton@Button>:
+    # Disable default background
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+        
+    # Default colors
+    normal_color: 0.3, 0.3, 0.3, 1
+    pressed_color: 0.2, 0.2, 0.2, 1
+    current_color: self.normal_color
+        
+    radius: [15]
+
+    # When pressed, change color
+    on_press:
+        self.current_color = self.pressed_color
+    on_release:
+        self.current_color = self.normal_color
+
+    canvas.before:
+        Color:
+            rgba: self.current_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: self.radius
+
 <NavigationManager>:
 
     canvas.before:
@@ -261,43 +288,29 @@
                             pos: self.pos
                             size: self.size   
     BoxLayout:
-        size: root.width  , root.height * 0.1
+        size_hint_y: 0.1
         spacing: 5
         padding: 5
-        orientation: 'horizontal'        
-        canvas.before:
-            Color: 
-                rgba: 0.5, 0.5, 0.5, 1
-            Rectangle:  
-                size: self.size
-                pos: self.pos
 
-
-        Button:
+        RoundedButton:
             text: 'Till'
-            background_color: (0.5,0.5,0.5,1)
-            on_press: root.screen_switcher("Till")
-    
-        Button:
+            on_press: root.screen_switcher("Till", self)
+
+        RoundedButton:
             text: 'Alarms'
-            background_color: (0.5,0.5,0.5,1)
-            on_press: root.screen_switcher("Alarms")
-    
-        Button:
+            on_press: root.screen_switcher("Alarms", self)
+
+        RoundedButton:
             text: 'International'
-            background_color: (0.5,0.5,0.5,1)
-            on_press: root.screen_switcher("International")
-        Button:
+            on_press: root.screen_switcher("International", self)
+
+        RoundedButton:
             text: 'Qibla'
-            background_color: (0.5,0.5,0.5,1)
-            on_press: root.screen_switcher("Qibla")
-        Button:
+            on_press: root.screen_switcher("Qibla", self)
+
+        RoundedButton:
             text: 'Settings'
-            background_color: (0.5,0.5,0.5,1)
-            on_press: root.screen_switcher("Settings")
-
-    
-
+            on_press: root.screen_switcher("Settings", self)
 
             
             
