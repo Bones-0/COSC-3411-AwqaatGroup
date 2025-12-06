@@ -8,7 +8,7 @@ from kivy.lang import Builder
 import kivy.utils as utils
 from kivy.animation import Animation
 
-Builder.load_file("main.kv")
+Builder.load_file("./UserInterface/main.kv")
 
 class NavigationManager(Widget):
     def screen_switcher(self, instance, button):

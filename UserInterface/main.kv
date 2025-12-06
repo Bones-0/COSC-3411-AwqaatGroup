@@ -2,30 +2,16 @@
 #:import WipeTransition kivy.uix.screenmanager.WipeTransition
 
 <RoundedButton@Button>:
-    # Disable default background
     background_color: 0, 0, 0, 0
     background_normal: ''
-        
-    # Default colors
-    normal_color: 0.3, 0.3, 0.3, 1
-    pressed_color: 0.2, 0.2, 0.2, 1
-    current_color: self.normal_color
-        
-    radius: [15]
-
-    # When pressed, change color
-    on_press:
-        self.current_color = self.pressed_color
-    on_release:
-        self.current_color = self.normal_color
 
     canvas.before:
         Color:
-            rgba: self.current_color
+            rgba: (0.2, 0.2, 0.2, 1) if self.state == 'down' else (0.3, 0.3, 0.3, 1)
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: self.radius
+            radius: [15]
 
 <NavigationManager>:
 
@@ -287,10 +273,20 @@
                         Rectangle:
                             pos: self.pos
                             size: self.size   
+            
     BoxLayout:
-        size_hint_y: 0.1
+        size: root.width * 0.9, root.height * 0.1
+        pos: root.width * 0.05, root.height * 0.0125  # Centers horizontally (5% margin on each side)
         spacing: 5
-        padding: 5
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1  # Dark gray background
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [10]
 
         RoundedButton:
             text: 'Till'
