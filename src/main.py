@@ -16,6 +16,24 @@ Builder.load_file("./UserInterface/main.kv")
 Window.title = "Awqaat"
 
 class NavigationManager(FloatLayout):
+    def next_prayer(self):
+        current_time = datetime.now().time()
+        prayer_times = PrayerTimeFetcher.get_prayer_times(*LocationFetcher.get_location())
+        prayer_name = ""
+
+        if not prayer_times:
+            return "Could not fetch prayer times."
+        for prayer, time_str in prayer_times.items():
+            prayer_time = datetime.strptime(time_str, "%H:%M").time()
+            if current_time < prayer_time:
+                return f"Next prayer is {prayer} at {time_str}"
+                prayer_name = prayer.lower()
+
+        self.ids.[prayer_name + "_label"].color = utils.get_color_from_hex("#FF0000")
+
+
+        return "No more prayers today."
+
     def app_setup(self):
         current_city = LocationFetcher.get_city()
         lat, lon = LocationFetcher.get_location()
