@@ -1,18 +1,32 @@
+from kivy.core.window import WindowBase
+import kivy.core.window.window_x11  # Force-load X11 provider
+
 from kivy.uix.floatlayout import FloatLayout
 from kivy.app import App
 from kivy.lang import Builder
+import kivy
 import kivy.utils as utils
 from kivy.core.window import Window
 from kivy.clock import Clock
 from datetime import datetime, timedelta
+import os
+from pathlib import Path
+from kivy.core.audio import SoundLoader
+from kivy.resources import resource_find
 
 from prayer_calculation import PrayerTimeFetcher
 from location_fetcher import LocationFetcher
-from kivy.core.audio import SoundLoader
 
-Builder.load_file("./UserInterface/main.kv")
-Window.title = "Awqaat"
-adhan = SoundLoader.load('./sounds/azan.mp3')
+# Base path (PyInstaller compatible)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load KV file safely
+Builder.load_file(resource_find("UserInterface/main.kv"))
+if Window:
+    Window.title = "Awqaat"
+
+# Load sound safely
+adhan = SoundLoader.load(resource_find("sounds/azan.mp3"))
 
 class NavigationManager(FloatLayout):
     
@@ -23,7 +37,7 @@ class NavigationManager(FloatLayout):
     def show_widget(self, widget):
         widget.opacity = 1
         widget.disabled = False 
-        
+
     def mute_adhan(self):
         if adhan:
             adhan.stop()
@@ -115,7 +129,7 @@ class NavigationManager(FloatLayout):
             if adhan:
                 adhan.volume = 1.0
                 adhan.play()
-                show_widget(self.ids.mute_button)
+                self.show_widget(self.ids.mute_button)
 
             self.update_next_prayer()
             return
