@@ -19,7 +19,7 @@ class PrayerTimeFetcher:
             if response["code"] != 200:
                 return None
 
-            print("Response successful")  # Debug print to see the full response
+            print(response)
             return response["data"]["timings"]
 
         except Exception as e:

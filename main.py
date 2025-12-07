@@ -1,6 +1,5 @@
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import ScreenManager
-from kivy.properties import NumericProperty
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
@@ -8,11 +7,14 @@ from kivy.uix.widget import Widget
 from kivy.lang import Builder
 import kivy.utils as utils
 from kivy.animation import Animation
+from kivy.core.window import Window
+
 
 from Services.prayer_calculation import PrayerTimeFetcher
 from Services.location_fetcher import LocationFetcher
 
 Builder.load_file("./UserInterface/main.kv")
+Window.title = "Awqaat"
 
 class NavigationManager(FloatLayout):
     def app_setup(self):
@@ -36,14 +38,12 @@ class NavigationManager(FloatLayout):
         sm = self.ids.current_screen
         sm.current = instance
         print("Screen changed to:", instance)
-
-        # This won't work unless background_color exists on the widget
-        animate_button = Animation(duration=0.2)
-        animate_button.start(button)
     def on_kv_post(self, base_widget):
         self.app_setup()
 
 class MainApp(App):
+    title = "Awqaat"
+    
     def build(self):
         return NavigationManager()
 

@@ -29,15 +29,33 @@ class LocationFetcher:
     def get_city():
         lat, lon = LocationFetcher.get_location()
         if not lat or not lon:
-            return None
+            return "Unknown"
 
-        address = LocationFetcher.get_address(lat, lon)
+        try:
+            geolocator = Nominatim(user_agent="location_fetcher", timeout=5)
 
-        city = (
-            address.get("city")
-            or address.get("town")
-            or address.get("village")
-            or address.get("county")
-        )
+            # Only "language" is allowed in your geopy version
+            location = geolocator.reverse(
+                (lat, lon),
+                exactly_one=True,
+                language="en"
+            )
 
-        return city
+            if not location:
+                return "Unknown"
+
+            address = location.raw.get("address", {})
+            print("DEBUG ADDRESS:", address)
+
+            # Try best fields for city-like name
+            for key in ["city", "town", "village", "municipality", "county", "state"]:
+                if key in address:
+                    return address[key]
+
+            return "Unknown"
+
+        except Exception as e:
+            print("Error:", e)
+            return "Unknown"
+
+
