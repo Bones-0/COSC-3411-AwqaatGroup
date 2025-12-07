@@ -98,20 +98,4 @@ All logic is split into:
 
 # 📁 Project Structure
 
-AwqaatGroup/
-│
-├── main.py
-├── requirements.txt
-│
-├── Services/
-│ ├── prayer_calculation.py
-│ ├── location_fetcher.py
-│ └── qibla_calculator.py
-│
-├── UserInterface/
-│ ├── main.kv
-│ └── assets/
-│
-├── tests/
-│
-└── presentation/
+Shown above ^^
