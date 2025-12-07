@@ -100,7 +100,7 @@
                                 size: self.size 
                                 radius: [5]
                     Label:
-                        id: magrib_label
+                        id: maghrib_label
                         text: "Magrib: --:-- "
                         color: 0, 0, 0, 1
                         canvas.before:
@@ -131,10 +131,17 @@
 
                     canvas.before:
                         Color:
-                            rgba: 1, 1, 1, 1  # Dark gray background
+                            rgba: 1, 1, 1, 1  # Dark gray backgraound
                         Rectangle:
                             pos: self.pos
                             size: self.size  
+                RoundedButton:
+                    id: mute_button
+                    size_hint: (0.3, 0.1)
+                    pos_hint: {"center_x": 0.5, "y": 0.125}
+                    text: 'Mute Adhan'
+                    on_press: root.mute_adhan()
+                    
         Screen:
             name: "Alarms"
             canvas.before:

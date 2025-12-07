@@ -5,9 +5,11 @@
     readme = "README.md"
     requires-python = ">=3.11"
     dependencies = [
+    "ffpyplayer>=4.5.3",
     "geocoder>=1.38.1",
     "geopy>=2.4.1",
     "kivy>=2.3.1",
+    "playsound==1.2.2",
     "requests>=2.32.5",
 ]
 
