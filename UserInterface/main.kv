@@ -180,7 +180,6 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size    
-
             FloatLayout:
                 size_hint: (None, None)
                 size: root.width, root.height 
@@ -208,6 +207,12 @@
                         Rectangle:
                             pos: self.pos
                             size: self.size   
+                Label:
+                    text: "Yet to come..."
+                    size_hint: (1, 1)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    font_size: '24sp'
+                    color: 0, 0, 0, 1
         Screen:
             name: "Settings"
             canvas.before:

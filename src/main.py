@@ -9,9 +9,8 @@ import kivy.utils as utils
 from kivy.animation import Animation
 from kivy.core.window import Window
 
-
-from Services.prayer_calculation import PrayerTimeFetcher
-from Services.location_fetcher import LocationFetcher
+from prayer_calculation import PrayerTimeFetcher
+from location_fetcher import LocationFetcher
 
 Builder.load_file("./UserInterface/main.kv")
 Window.title = "Awqaat"
