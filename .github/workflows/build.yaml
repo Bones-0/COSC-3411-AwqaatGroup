@@ -1,0 +1,44 @@
+name: Build Awqaat Cross-Platform
+
+on:
+  push:
+    tags:
+      - "v*"     # Workflow triggers when you push a version tag like v1.0.0
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          pip install nuitka
+          pip install geopy requests kivy
+
+      # ------------------------------ LINUX ------------------------------
+      - name: Build for Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          nuitka \
+            --standalone \
+            --onefile \
+            --output-dir=build_linux \
+            src/main.py
+
+          mv build_linux/main.bin Awqaat-Linux
+          tar -czvf Awqaat-Linux.tar.gz Awqaat-Linux
+
+      - name: Upload Linux Artifact
+        if: ma
