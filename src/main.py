@@ -1,3 +1,6 @@
+import os
+import sys
+
 from kivy.uix.floatlayout import FloatLayout
 from kivy.app import App
 from kivy.lang import Builder
@@ -10,9 +13,40 @@ from prayer_calculation import PrayerTimeFetcher
 from location_fetcher import LocationFetcher
 from kivy.core.audio import SoundLoader
 
-Builder.load_file("./UserInterface/main.kv")
+from kivy.resources import resource_add_path, resource_find
+
+def setup_paths():
+    if hasattr(sys, '_MEIPASS'):
+        # Running as PyInstaller bundle
+        base_path = sys._MEIPASS
+    else:
+        # Running as script
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        base_path = os.path.join(base_path, '..')
+    
+    # Add resource paths
+    ui_path = os.path.join(base_path, 'UserInterface')
+    img_path = os.path.join(base_path, 'images')
+    snd_path = os.path.join(base_path, 'sounds')
+    
+    for path in [ui_path, img_path, snd_path]:
+        if os.path.exists(path):
+            resource_add_path(path)
+            print(f"Added resource path: {path}")
+        else:
+            print(f"WARNING: Path not found: {path}")
+
+setup_paths()
+
+# Now load your .kv files
+kv_file = resource_find('main.kv')  # or whatever your kv file is named
+if kv_file:
+    Builder.load_file(kv_file)
+else:
+    print("ERROR: main.kv not found!")
+    sys.exit(1)
 Window.title = "Awqaat"
-adhan = SoundLoader.load('./sounds/azan.mp3')
+adhan = SoundLoader.load(resource_find('azan.mp3'))
 
 class NavigationManager(FloatLayout):
     
@@ -57,7 +91,7 @@ class NavigationManager(FloatLayout):
 
         # populate UI
         self.ids.fajr_label.text = f"Fajr: {self.prayer_times['Fajr']}"
-        self.ids.duhur_label.text = f"Dhuhr: {self.prayer_times['Dhuhr']}"
+        self.ids.dhuhr_label.text = f"Dhuhr: {self.prayer_times['Dhuhr']}"
         self.ids.asr_label.text = f"Asr: {self.prayer_times['Asr']}"
         self.ids.maghrib_label.text = f"Maghrib: {self.prayer_times['Maghrib']}"
         self.ids.isha_label.text = f"Isha: {self.prayer_times['Isha']}"
@@ -65,7 +99,7 @@ class NavigationManager(FloatLayout):
         self.ids.location_label.text = f"Location: {current_city} ({lat}, {lon})"
 
     def reset_label_colors(self):
-        for name in ["fajr", "duhur", "asr", "maghrib", "isha"]:
+        for name in ["fajr", "dhuhr", "asr", "maghrib", "isha"]:
             self.ids[name + "_label"].color = utils.get_color_from_hex("#000000")
 
     def find_next_prayer(self):

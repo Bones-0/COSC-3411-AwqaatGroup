@@ -97,5 +97,3 @@ All logic is split into:
 ---
 
 # 📁 Project Structure
-
-Shown above ^^
