@@ -149,7 +149,7 @@ class NavigationManager(FloatLayout):
             if adhan:
                 adhan.volume = 1.0
                 adhan.play()
-                show_widget(self.ids.mute_button)
+                self.show_widget(self.ids.mute_button)
 
             self.update_next_prayer()
             return
