@@ -1,0 +1,26 @@
+# Awqaat - Islamic Prayer Time & Qibla Application
+# Python Requirements File
+# Compatible with Python 3.11+
+
+# UI Framework
+kivy>=2.3.1
+
+# HTTP Requests for API calls
+requests>=2.32.5
+
+# Geolocation Services
+geopy>=2.4.1
+geocoder>=1.38.1
+
+# Media Player for Kivy
+ffpyplayer>=4.5.3
+
+# Audio Playback
+playsound==1.2.2
+
+# Additional Kivy Dependencies (automatically installed with kivy)
+# Kivy-Garden>=0.1.4
+# docutils
+# pygments
+# kivy-deps.sdl2 (Windows only)
+# kivy-deps.glew (Windows only)
