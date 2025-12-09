@@ -23,8 +23,7 @@ The project is designed with modular architecture, making it easy to expand, mai
 12. [API Integration (AlAdhan)](#api-integration-aladhan)  
 13. [Troubleshooting](#troubleshooting)  
 14. [Future Improvements](#future-improvements)  
-15. [Group Members](#group-members)  
-16. [License](#license)
+15. [License](#license)
 
 ---
 
@@ -384,12 +383,6 @@ uv sync --reinstall
 
 ---
 
-# 👥 Group Members
-
-*[Add your group members here]*
-
----
-
 # 📄 License
 
 This project is developed for educational purposes as part of COSC-3411.
@@ -403,5 +396,3 @@ For issues or questions:
 - Contact the development team
 
 ---
-
-**Made with ❤️ for the Muslim community**
