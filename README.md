@@ -5,8 +5,6 @@ It provides accurate daily Islamic prayer times, calculates the Qibla direction,
 
 ![Awqaat Demo](https://github.com/user-attachments/assets/a23cf07f-bab7-487f-9a41-bd89da7f1ad4)
 
-
-
 The project is designed with modular architecture, making it easy to expand, maintain, and test.
 
 ---
@@ -105,14 +103,16 @@ Before installing Awqaat, ensure you have:
 
 - **Python 3.11 or higher** installed
 - **Git** for cloning the repository
-- **uv** package manager for dependency management
+- **pip** or **uv** package manager for dependency management
 - Internet connection (for API-based prayer times)
 
 ---
 
 # 🚀 Installation
 
-Follow these 5 simple steps to get Awqaat up and running:
+You can install Awqaat using either **pip** (traditional method) or **uv** (faster, modern method). Choose the method that works best for you.
+
+---
 
 ## Step 1: Install Python
 
@@ -133,7 +133,7 @@ Follow these 5 simple steps to get Awqaat up and running:
 ### Linux (Debian/Ubuntu/Kali):
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip
+sudo apt install python3 python3-pip python3-venv
 ```
 
 ### macOS:
@@ -166,21 +166,25 @@ cd COSC-3411-AwqaatGroup
 
 ---
 
-## Step 3: Install UV Package Manager
+## Step 3: Choose Your Installation Method
 
-**uv** is a fast Python package manager that handles all dependencies automatically.
+### 🚀 **Method A: Using UV (Recommended - Faster)**
 
-### Windows (PowerShell):
+**uv** is a modern Python package manager that's significantly faster than pip.
+
+#### Install UV:
+
+**Windows (PowerShell):**
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### Windows (using pip):
+**Windows (using pip):**
 ```bash
 pip install uv
 ```
 
-### Linux/macOS:
+**Linux/macOS:**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.cargo/env
@@ -191,11 +195,7 @@ source $HOME/.cargo/env
 uv --version
 ```
 
----
-
-## Step 4: Install Dependencies
-
-From inside the project directory, run:
+#### Install Dependencies with UV:
 
 ```bash
 uv sync
@@ -203,37 +203,49 @@ uv sync
 
 This command will:
 - ✅ Create a virtual environment (`.venv`)
-- ✅ Install all required dependencies:
-  - `kivy>=2.3.1`
-  - `requests>=2.32.5`
-  - `geopy>=2.4.1`
-  - `geocoder>=1.38.1`
-  - `ffpyplayer>=4.5.3`
-  - `playsound==1.2.2`
+- ✅ Install all required dependencies automatically
 
-**Note:** This may take a few minutes on first run.
-
----
-
-## Step 5: Run the Application
-
-Start Awqaat with:
+#### Run the Application:
 
 ```bash
 uv run python src/main.py
 ```
 
-**Alternative Method (Manual activation):**
+---
 
-### Windows:
+### 📦 **Method B: Using pip (Traditional)**
+
+#### Create Virtual Environment:
+
+**Windows:**
 ```bash
+python -m venv .venv
 .venv\Scripts\activate
-python src/main.py
 ```
 
-### Linux/macOS:
+**Linux/macOS:**
 ```bash
+python3 -m venv .venv
 source .venv/bin/activate
+```
+
+#### Install Dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install:
+- `kivy>=2.3.1`
+- `requests>=2.32.5`
+- `geopy>=2.4.1`
+- `geocoder>=1.38.1`
+- `ffpyplayer>=4.5.3`
+- `playsound==1.2.2`
+
+#### Run the Application:
+
+```bash
 python src/main.py
 ```
 
@@ -241,6 +253,7 @@ python src/main.py
 
 # 🎯 Quick Start Summary
 
+### Using UV (Recommended):
 ```bash
 # 1. Install Python (see Step 1 above)
 
@@ -258,6 +271,30 @@ uv sync
 uv run python src/main.py
 ```
 
+### Using pip:
+```bash
+# 1. Install Python (see Step 1 above)
+
+# 2. Clone the repository
+git clone --branch v0.0.1 https://github.com/Bones-0/COSC-3411-AwqaatGroup.git
+cd COSC-3411-AwqaatGroup
+
+# 3. Create virtual environment
+python -m venv .venv
+
+# 4. Activate virtual environment
+# Windows:
+.venv\Scripts\activate
+# Linux/macOS:
+source .venv/bin/activate
+
+# 5. Install dependencies
+pip install -r requirements.txt
+
+# 6. Run the application
+python src/main.py
+```
+
 ---
 
 # 📁 Project Structure
@@ -273,7 +310,8 @@ COSC-3411-AwqaatGroup/
 │   └── *.kv                    # Kivy UI files
 ├── images/                     # App images and icons
 ├── sounds/                     # Audio files
-├── pyproject.toml              # Project dependencies
+├── pyproject.toml              # Project dependencies (for uv)
+├── requirements.txt            # Project dependencies (for pip)
 ├── uv.lock                     # Locked dependencies
 └── README.md                   # This file
 ```
@@ -362,9 +400,19 @@ sudo apt install python3-dev libsdl2-dev libsdl2-image-dev \
 
 ### Issue: Dependencies conflict
 **Solution:**
+
+**For uv users:**
 ```bash
 rm -rf .venv
 uv sync --reinstall
+```
+
+**For pip users:**
+```bash
+rm -rf .venv
+python -m venv .venv
+# Activate venv (see Step 3 above)
+pip install -r requirements.txt
 ```
 
 ### Issue: Location not detected
@@ -372,6 +420,12 @@ uv sync --reinstall
 - Check internet connection
 - Grant location permissions
 - Manually enter coordinates in settings
+
+### Issue: `ModuleNotFoundError` after installation
+**Solution:**
+- Ensure virtual environment is activated
+- Reinstall dependencies
+- Check Python version is 3.11+
 
 ---
 
