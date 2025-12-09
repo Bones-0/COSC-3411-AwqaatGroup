@@ -46,8 +46,13 @@ else:
     print("ERROR: main.kv not found!")
     sys.exit(1)
 Window.title = "Awqaat"
-adhan = SoundLoader.load(resource_find('azan.mp3'))
 
+adhan = SoundLoader.load(resource_find('azan.mp3'))
+if adhan:
+    print("Adhan sound loaded successfully")
+else:
+    print("ERROR: Failed to load azan.mp3")
+    
 class NavigationManager(FloatLayout):
     
     def hide_widget(self, widget):
