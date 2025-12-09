@@ -3,7 +3,8 @@
 Awqaat is a Python/Kivy-based application developed for the COSC-3411 course project.  
 It provides accurate daily Islamic prayer times, calculates the Qibla direction, and displays all results through a clean graphical interface.
 
-![Awqaat Demo](https://github.com/user-attachments/assets/878751d1-d8e9-4039-91cd-c282d99cb740)
+![Awqaat Demo](https://github.com/user-attachments/assets/a23cf07f-bab7-487f-9a41-bd89da7f1ad4)
+
 
 
 The project is designed with modular architecture, making it easy to expand, maintain, and test.
